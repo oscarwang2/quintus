@@ -1,0 +1,79 @@
+<html>
+<head>
+
+
+        // Check if the user is on a mobile device
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // Redirect if the user is on a mobile device
+        if (isMobile()) {
+            window.location.href = '/mobile.html';
+        }
+    </script>
+  <script>
+        // Function to set privacy settings in local storage
+        function setPrivacySettings() {
+            // Set expiration date to 7 days from now
+            const expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 7);
+
+            // Privacy settings object
+            const privacySettings = {
+                disallowTrackers: true,
+                disallowCookies: true,
+                expirationDate: expirationDate.toISOString(), // Convert to ISO string for storage
+            };
+
+            // Save privacy settings to local storage
+            localStorage.setItem('privacySettings', JSON.stringify(privacySettings));
+
+            console.log('Privacy settings saved.');
+        }
+
+        // Call the function to set privacy settings
+        setPrivacySettings();
+    </script>
+
+<script>
+function search() {
+  var x = document.getElementById("query").value;
+  window.location.href = "https://quintussearch.w3spaces.com/search.html?gsc.q=hi#gsc.tab=0&gsc.q=" + x;
+}
+</script>
+<style>
+body {
+  background-image: url("./Design_1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain; /* this will make the image fit the screen without stretching or cropping */
+}
+
+.search-bar {
+  width: 400px;
+  height: 40px;
+  border: none; /* this will remove the border of the search bar */
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 18px;
+  outline: none; /* this will remove the outline of the search bar when it is focused */
+  display: none; /* this will hide the search bar until the image is loaded */
+}
+
+.center {
+  position: absolute;
+  top: 53%;
+  left: 52%;
+  transform: translate(-52%, -48%);
+}
+</style>
+</head>
+<body onload="document.getElementById('query').style.display = 'block';"> <!-- this will show the search bar when the body is loaded -->
+<div class="center">
+<form onsubmit="search(); return false;">
+<input type="text" id="query" class="search-bar" placeholder="Search Anything" autofocus>
+</form>
+</div>
+</body>
+</html>
